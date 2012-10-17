@@ -21,6 +21,15 @@ module PiggybakVariants
           configure :option_values do
             inverse_of :variants
           end
+          show do
+            field :option_values do
+              visible true
+            end
+            field :options do
+              visible false
+            end
+            
+          end
           edit do
             include_all_fields
           end
