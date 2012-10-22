@@ -1,11 +1,8 @@
 class CreateNewVariants < ActiveRecord::Migration
   def up
     create_table :variants, :force => true do |t|
-      t.integer :sellable_id
-      t.string :sku
-      t.decimal :price, :precision => 10, :scale => 2
-      t.integer :quantity
-      t.boolean :unlimited_inventory
+      t.integer :item_id, :null => false
+      t.string :item_type, :null => false
       t.timestamps
     end
   end

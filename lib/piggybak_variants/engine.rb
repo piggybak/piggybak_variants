@@ -5,33 +5,53 @@ module PiggybakVariants
   
     initializer "piggybak.rails_admin_config" do |app|
       RailsAdmin.config do |config|
-        config.model Piggybak::Option do
-          configure :option_values do
-                # configuration here
+        config.model PiggybakVariants::OptionConfiguration do
+          visible false
+          object_label_method :admin_label
+          edit do
+            field :klass
           end
-          list do 
-            include_all_fields
+        end
+
+        config.model PiggybakVariants::OptionValue do
+          visible false
+          edit do
+            field :name
+            field :position
+          end
+        end
+
+        config.model PiggybakVariants::Option do
+          navigation_label "Variants"
+          list do
+            field :name
+            field :position
+            field :option_values
+            field :option_configurations
           end
           edit do
-            include_all_fields
+            field :name
+            field :position
+            field :option_configurations do
+              active true
+            end
+            field :option_values do
+              active true
+            end
           end
         end
         
-        config.model Piggybak::Variant do
-          configure :option_values do
-            inverse_of :variants
-          end
+        config.model PiggybakVariants::Variant do
           show do
             field :option_values do
               visible true
             end
-            field :options do
-              visible false
-            end
-            
           end
           edit do
-            include_all_fields
+            field :option_values
+            field :piggybak_sellable do
+              active true
+            end
           end
         end
       end
