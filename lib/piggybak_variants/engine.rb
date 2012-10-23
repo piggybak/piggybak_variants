@@ -8,6 +8,7 @@ module PiggybakVariants
         config.model PiggybakVariants::OptionConfiguration do
           visible false
           object_label_method :admin_label
+          label "Classes with Option"
           edit do
             field :klass
           end
@@ -15,6 +16,7 @@ module PiggybakVariants
 
         config.model PiggybakVariants::OptionValue do
           visible false
+          object_label_method :admin_label
           edit do
             field :name
             field :position
@@ -27,14 +29,18 @@ module PiggybakVariants
             field :name
             field :position
             field :option_values
-            field :option_configurations
+            field :option_configurations do
+              label "Classes with Option"
+            end
           end
           edit do
             field :name
             field :position
             field :option_configurations do
+              label "Classes with Option"
               active true
             end
+            # TODO: Limit to current item's options
             field :option_values do
               active true
             end
@@ -42,6 +48,7 @@ module PiggybakVariants
         end
         
         config.model PiggybakVariants::Variant do
+          object_label_method :admin_label
           show do
             field :option_values do
               visible true

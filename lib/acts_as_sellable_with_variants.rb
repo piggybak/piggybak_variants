@@ -8,6 +8,8 @@ module Piggybak
 
         accepts_nested_attributes_for :variants, :allow_destroy => true
         attr_accessible :variants_attributes, :allow_destroy => true
+
+        ::PiggybakVariants::OptionConfiguration::VARIANT_CLASSES << self.to_s
       end      
     end
   end
