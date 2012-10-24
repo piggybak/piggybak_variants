@@ -9,6 +9,9 @@ module PiggybakVariants
 
     validate :option_value_validation
 
+    # TODO: Add quantity, unlimited inventory in this scope 
+    scope :available, joins(:piggybak_sellable).where("sellables.active IS TRUE") 
+
     def admin_label
       "#{self.piggybak_sellable.sku}: #{self.piggybak_sellable.price}"
     end

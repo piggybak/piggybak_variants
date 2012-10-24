@@ -10,6 +10,10 @@ module PiggybakVariants
         helper :piggybak_variants
       end
     end
+
+    initializer "piggybak_variants.precompile_hook" do |app|
+      app.config.assets.precompile += ['piggybak_variants/piggybak_variants.js']
+    end
   
     initializer "piggybak.rails_admin_config" do |app|
       RailsAdmin.config do |config|
