@@ -4,19 +4,19 @@ module PiggybakVariants
 
     acts_as_sellable
     belongs_to :item, :polymorphic => true
-
     has_and_belongs_to_many :option_values
 
+    scope :available, joins(:piggybak_sellable).where("sellables.active IS TRUE AND (sellables.quantity > 0 OR sellables.unlimited_inventory IS TRUE)") 
     validate :option_value_validation
-
-    # TODO: Add quantity, unlimited inventory in this scope 
-    scope :available, joins(:piggybak_sellable).where("sellables.active IS TRUE") 
 
     def admin_label
       "#{self.piggybak_sellable.sku}: #{self.piggybak_sellable.price}"
     end
 
     def option_value_validation
+      # TODO: Figure out why this validation is only being called sometime
+      # TODO: Add verification to prevent duplicate option value sets
+
       klass = self.item.class
       options = ::PiggybakVariants::OptionConfiguration.find_all_by_klass(klass).collect { |oc| oc.option }
       error = false
@@ -30,7 +30,7 @@ module PiggybakVariants
           error = true
         end
       end 
-      self.errors.add(:base, "Option value errors")
+      self.errors.add(:base, "Option value errors") if error
     end
   end
 end
