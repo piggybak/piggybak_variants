@@ -27,7 +27,7 @@ module PiggybakVariants
           error = true
         end
       end 
-      self.errors.add(:base, "Option value errors") if error
+      self.errors.add(:base, "Option value errors")
     end
   end
 end

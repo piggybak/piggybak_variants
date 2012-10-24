@@ -1,7 +1,15 @@
 module PiggybakVariants
   class Engine < ::Rails::Engine
     isolate_namespace PiggybakVariants
-    
+   
+    config.to_prepare do 
+      ApplicationController.class_eval do
+        helper :piggybak_variants
+      end
+      RailsAdmin::ApplicationController.class_eval do
+        helper :piggybak_variants
+      end
+    end
   
     initializer "piggybak.rails_admin_config" do |app|
       RailsAdmin.config do |config|
@@ -40,7 +48,6 @@ module PiggybakVariants
               label "Classes with Option"
               active true
             end
-            # TODO: Limit to current item's options
             field :option_values do
               active true
             end
@@ -55,7 +62,10 @@ module PiggybakVariants
             end
           end
           edit do
-            field :option_values
+            field :option_values do
+              partial "option_values"
+              help "An option value for each option must be selected"
+            end
             field :piggybak_sellable do
               active true
             end

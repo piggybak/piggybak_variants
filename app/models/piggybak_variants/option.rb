@@ -6,6 +6,8 @@ module PiggybakVariants
     has_many :option_values
     has_many :option_configurations
 
+    default_scope :order => "position ASC"
+
     accepts_nested_attributes_for :option_values, :allow_destroy => true
     attr_accessible :option_values_attributes, :allow_destroy => true
 
