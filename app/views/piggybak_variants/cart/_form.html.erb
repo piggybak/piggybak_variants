@@ -1,18 +1,7 @@
-<% if object.reflections.keys.include?(:piggybak_sellable) -%>
-	<% if object.piggybak_sellable && object.piggybak_sellable.active -%>
-		<% if object.piggybak_sellable.quantity > 0 || object.piggybak_sellable.unlimited_inventory -%>
-			<%= form_tag piggybak.cart_add_url do -%>
-			<div id="sellable_details">
-			<span id="title"><%= object.piggybak_sellable.description %></span>
-			<span id="price"><%= number_to_currency object.piggybak_sellable.price %></span>
-			</div>
-			<label>Quantity</label>
-			<%= text_field_tag :quantity, "1" %>
-			<%= hidden_field_tag :sellable_id, object.piggybak_sellable.id %>
-			<%= submit_tag "Add to Cart", :id => "submit" %>
-			<% end -%>
-			<% else -%>
-			Sorry, out of stock.
-		<% end -%>
+<% if object.reflections.keys.include?(:variants) -%>
+	<%= form_tag piggybak.cart_add_url do -%>
+	<%= select_tag(:sellable_id, options_for_select(object.variants.collect { |v| [ "#{v.piggybak_sellable.description} #{v.piggybak_sellable.price}", v.piggybak_sellable.id ] })) %>
+	<%= text_field_tag :quantity, 1 %>
+	<%= submit_tag "Add to Cart", :id => "submit" %>
 	<% end -%>
 <% end -%>
