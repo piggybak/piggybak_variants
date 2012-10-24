@@ -7,11 +7,11 @@ require "piggybak_variants/version"
 Gem::Specification.new do |s|
   s.name        = "piggybak_variants"
   s.version     = PiggybakVariants::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of PiggybakVariants."
-  s.description = "TODO: Description of PiggybakVariants."
+  s.authors     = ["Tim Case, Steph Skardal"]
+  s.email       = ["piggybak@endpoint.com"]
+  s.homepage    = "http://www.piggybak.org"
+  s.summary     = "Advanced variant support for Piggybak."
+  s.description = "Advanced variant support for Piggybak."
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
