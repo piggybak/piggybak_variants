@@ -14,7 +14,14 @@ module PiggybakVariants
     initializer "piggybak_variants.precompile_hook" do |app|
       app.config.assets.precompile += ['piggybak_variants/piggybak_variants.js']
     end
-  
+
+    # TODO: Figure out of we can have this only in to_prepare or here 
+    initializer "piggybak_variants.add_helper" do |app| 
+      ApplicationController.class_eval do
+        helper :piggybak_variants
+      end
+    end
+
     initializer "piggybak.rails_admin_config" do |app|
       RailsAdmin.config do |config|
         config.model PiggybakVariants::OptionConfiguration do

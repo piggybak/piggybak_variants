@@ -3,8 +3,8 @@ module PiggybakVariants
     self.table_name = "options"
 
     attr_accessible :name, :position
-    has_many :option_values
-    has_many :option_configurations
+    has_many :option_values, :dependent => :destroy
+    has_many :option_configurations, :dependent => :destroy
 
     default_scope :order => "position ASC"
 
