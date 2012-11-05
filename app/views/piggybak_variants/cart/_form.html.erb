@@ -9,7 +9,7 @@
 		<% options_for_klass(object.class).each do |option| -%>
 		<div class="option" id="option_<%= option.id %>">
 		<h4><%= option.name %></h4>
-		<% option.option_values.each do |option_value| -%>
+		<% option.option_values.ordered.each do |option_value| -%>
 			<input type="radio" name="option_<%= option.id %>" value="<%= option_value.id %>" />
 			<%= option_value.name %><br />
 		<% end -%>
