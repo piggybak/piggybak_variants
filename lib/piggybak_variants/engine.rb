@@ -43,7 +43,7 @@ module PiggybakVariants
         end
 
         config.model PiggybakVariants::Option do
-          navigation_label "Variants"
+          navigation_label "Extensions"
           list do
             field :name
             field :position
