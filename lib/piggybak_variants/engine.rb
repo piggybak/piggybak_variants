@@ -11,6 +11,14 @@ module PiggybakVariants
       end
     end
 
+    config.before_initialize do
+      Piggybak.config do |config|
+        config.manage_classes += ["::PiggybakVariants::Option",
+                                  "::PiggybakVariants::OptionConfiguration",
+                                  "::PiggybakVariants::OptionValue"]
+      end
+    end
+
     initializer "piggybak_variants.precompile_hook" do |app|
       app.config.assets.precompile += ['piggybak_variants/piggybak_variants.js']
     end
