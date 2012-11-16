@@ -1,12 +1,10 @@
 :ruby
   column_type_dom_id = form.dom_id(field).sub(field.method_name.to_s, "")
-  attr = column_type_dom_id.gsub("frame_variants_attributes", '').gsub(/^_/, '[').gsub(/_$/, ']')
-
-= #TODO: Add JavaScript to limit selectors here
+  attr = column_type_dom_id.gsub(/[a-z]+_variants_attributes/, '').gsub(/^_/, '[').gsub(/_$/, ']')
 
 - options_for_klass(@object.class).each do |option|
   %h5= option.name
   - option.option_values.each do |option_value|
     %p
-      = check_box_tag "frame[variants_attributes]#{attr}[option_value_ids][]", option_value.id, form.object.option_values.include?(option_value), :style => "margin:-2px 5px 0px 0px;"
+      = check_box_tag "#{@object.class.to_s.downcase}[variants_attributes]#{attr}[option_value_ids][]", option_value.id, form.object.option_values.include?(option_value), :style => "margin:-2px 5px 0px 0px;"
       %span= option_value.name
