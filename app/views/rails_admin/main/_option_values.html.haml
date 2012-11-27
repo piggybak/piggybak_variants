@@ -4,6 +4,7 @@
 
 - options_for_klass(@object.class).each do |option|
   %h5= option.name
+  = hidden_field_tag "#{@object.class.to_s.downcase}[variants_attributes]#{attr}[option_value_ids][]", nil
   - option.option_values.each do |option_value|
     %p
       = check_box_tag "#{@object.class.to_s.downcase}[variants_attributes]#{attr}[option_value_ids][]", option_value.id, form.object.option_values.include?(option_value), :style => "margin:-2px 5px 0px 0px;"
