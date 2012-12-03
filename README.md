@@ -9,8 +9,6 @@ TODO
 
 * Notes specified in variant.rb
 
-* Fix delete of option values - if you unselect option values and save, delete doesn't happen.
-
 
 Copyright
 ========
