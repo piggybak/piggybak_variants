@@ -1,6 +1,6 @@
 :ruby
   column_type_dom_id = form.dom_id(field).sub(field.method_name.to_s, "")
-  attr = column_type_dom_id.gsub(/[a-z]+_variants_attributes/, '').gsub(/^_/, '[').gsub(/_$/, ']')
+  attr = column_type_dom_id.gsub(/[a-z_]+_variants_attributes/, '').gsub(/^_/, '[').gsub(/_$/, ']')
 
 - options_for_klass(@object.class).each do |option|
   %h5= option.name
