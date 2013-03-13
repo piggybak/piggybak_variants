@@ -16,7 +16,7 @@ var piggybak_variants = {
 				all_selected = false;	
 			}
 		});
-		var selected_key = selected.join('_');
+		var selected_key = selected.sort().join('_');
 		if(all_selected && variant_map[selected_key]) {
 			$('.variant_options form').show();
 			$('#sellable_id').val(variant_map[selected_key].id);
