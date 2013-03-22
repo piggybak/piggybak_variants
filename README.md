@@ -19,6 +19,8 @@ In the admin, define option configurations and option values for each option, th
 
 Finally, add `<%= variant_cart_form(@instance) %>` to your sellable item's show page to render the cart form.
 
+OPTION:  `<%= variant_cart_form(@instance, :controls => 'dropdowns) %>` to render dropdowns instead of radio buttons.
+
 
 TODO
 ========

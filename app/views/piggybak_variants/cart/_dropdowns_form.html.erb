@@ -1,0 +1,26 @@
+<% if object.reflections.keys.include?(:variants) -%>
+  <%= javascript_include_tag "piggybak_variants/piggybak_variants" %>
+
+	<script type="text/javascript">
+		var variant_map = <%= raw variant_map(object) %>;
+	</script>
+
+	<div class="variant_options">
+		<% options_for_klass(object.class).each do |option| -%>
+		<div class="option" id="option_<%= option.id %>">
+		<h4><%= option.name %></h4>
+		<%= select_tag option.name, options_for_select(option.option_values.map{ |o| [o.name, o.id, { name: "option_#{option.name}-#{o.id}"}] }), include_blank: true %>
+		<br />
+		</div>
+		<% end -%>
+		<span class="all_selected">You must select a choice from each option.</span>
+		<span class="unavailable">This combination is not available.</span>
+		<%= form_tag piggybak.cart_add_url do -%>
+		<input type="hidden" id="sellable_id" name="sellable_id" />
+		<!-- <div id="variant_price">Price: <span></span></div> -->
+		<label for="quantity">Quantity</label>
+		<%= text_field_tag :quantity, 1 %>
+		<%= submit_tag "Add to Cart", :id => "submit" %>
+		<% end -%>
+	</div>
+<% end -%>

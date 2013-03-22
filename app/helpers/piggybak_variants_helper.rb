@@ -1,6 +1,6 @@
 module PiggybakVariantsHelper
-  def variant_cart_form(object)
-    render "piggybak_variants/cart/form", :object => object
+  def variant_cart_form(object, options = {:controls => 'radio_buttons'})
+    render "piggybak_variants/cart/#{options[:controls]}_form", :object => object
   end
 
   def options_for_klass(klass)
