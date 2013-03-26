@@ -29,8 +29,8 @@ function extractRadioButtonValues(){
 function extractDropdownValues(){     
   var all_selected = true;
   $('.variant_options select').each(function() { 
-      if ($(this).attr('value') == '') {
-        all_selected = false;
+      if (this.selectedIndex == 0) {
+          all_selected = false;
       }
   });
   var selected = new Array();
