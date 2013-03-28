@@ -1,3 +1,9 @@
+0.0.15
+Released: 3.28.2013
+* JavaScript function cleanup, extractDropdownValues simplification / refactoring
+* Namespace additions in JavaScript
+* Minor readme update
+
 0.0.14
 Released: 3.22.2013
 * Running sort on selected array

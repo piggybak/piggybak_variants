@@ -9,7 +9,7 @@
 		<% options_for_klass(object.class).each do |option| -%>
 		<div class="option" id="option_<%= option.id %>">
 		<h4><%= option.name %></h4>
-		<%= select_tag option.name, options_for_select(option.option_values.map{ |o| [o.name, o.id, { name: "option_#{option.name}-#{o.id}"}] }), include_blank: true %>
+		<%= select_tag option.name, options_for_select(option.option_values.map{ |o| [o.name, o.id] }), include_blank: true %>
 		<br />
 		</div>
 		<% end -%>
@@ -17,7 +17,7 @@
 		<span class="unavailable">This combination is not available.</span>
 		<%= form_tag piggybak.cart_add_url do -%>
 		<input type="hidden" id="sellable_id" name="sellable_id" />
-		<!-- <div id="variant_price">Price: <span></span></div> -->
+		<div id="variant_price">Price: <span></span></div>
 		<label for="quantity">Quantity</label>
 		<%= text_field_tag :quantity, 1 %>
 		<%= submit_tag "Add to Cart", :id => "submit" %>
