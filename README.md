@@ -21,10 +21,6 @@ Finally, add `<%= variant_cart_form(@instance) %>` to your sellable item's show 
 
 OPTION:  `<%= variant_cart_form(@instance, :controls => 'dropdowns') %>` to render dropdowns instead of radio buttons.
 
-In your `config/environments/production.rb`, add the following line to allow pre-compilation of piggybak_variants.js:
-
-    config.assets.precompile += %w(piggybak_variants/piggybak_variants.js)
-
 So either add that line, or if you already have it enabled just add `piggybak_variants/piggybak_variants.js` to the array of values.
 
 TODO
