@@ -19,7 +19,7 @@ module PiggybakVariants
       end
     end
 
-    initializer "piggybak_variants.precompile_hook" do |app|
+    initializer "piggybak_variants.precompile_hook", :group => :all do |app|
       app.config.assets.precompile += ['piggybak_variants/piggybak_variants.js']
     end
 
