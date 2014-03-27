@@ -1,6 +1,4 @@
 <% if object.reflections.keys.include?(:variants) -%>
-	<%= javascript_include_tag "piggybak_variants/piggybak_variants" %>
-
 	<script type="text/javascript">
 		var variant_map = <%= raw variant_map(object) %>;
 	</script>
@@ -9,7 +7,7 @@
 		<% options_for_klass(object.class).each do |option| -%>
 		<div class="option" id="option_<%= option.id %>">
 		<h4><%= option.name %></h4>
-		<% option.option_values.ordered.each do |option_value| -%>
+		<% option.option_values.each do |option_value| -%>
 			<input type="radio" name="option_<%= option.id %>" value="<%= option_value.id %>" />
 			<%= option_value.name %><br />
 		<% end -%>

@@ -19,10 +19,10 @@ module PiggybakVariants
       end
     end
 
-    initializer "piggybak_variants.precompile_hook", :group => :all do |app|
-      app.config.assets.precompile += ['piggybak_variants/piggybak_variants.js']
+    initializer "piggybak_variants.assets.precompile" do |app|
+      app.config.assets.precompile += ['piggybak_variants/piggybak_variants-application.js']
     end
-
+    
     # TODO: Figure out of we can have this only in to_prepare or here 
     initializer "piggybak_variants.add_helper" do |app| 
       ApplicationController.class_eval do

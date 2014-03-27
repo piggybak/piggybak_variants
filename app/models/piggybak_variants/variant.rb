@@ -1,22 +1,22 @@
 module PiggybakVariants
   class Variant < ActiveRecord::Base
-    self.table_name = "variants"
-
     acts_as_sellable
     belongs_to :item, :polymorphic => true
     has_and_belongs_to_many :option_values
 
-    attr_accessible :option_value_ids, :piggybak_sellable_attributes
-
-    scope :available, joins(:piggybak_sellable).where(["sellables.active = ? AND (sellables.quantity > 0 OR sellables.unlimited_inventory = ?)",true,true]) 
+    scope :available, joins(:piggybak_sellable).where(["piggybak_sellables.active = ? AND (piggybak_sellables.quantity > 0 OR piggybak_sellables.unlimited_inventory = ?)",true,true]) 
     validate :option_value_validation
+    validate :require_item
 
     def admin_label
       "#{self.piggybak_sellable.sku}: #{self.piggybak_sellable.price}"
     end
 
+    def require_item
+      self.errors.add(:piggybak_sellable, "You must have foo") if self.piggybak_sellable.nil?
+    end
+
     def option_value_validation
-      # TODO: Figure out why this validation is only being called sometime
       # TODO: Add verification to prevent duplicate option value sets
 
       klass = self.item.class
