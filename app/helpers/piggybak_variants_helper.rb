@@ -4,7 +4,7 @@ module PiggybakVariantsHelper
   end
 
   def options_for_klass(klass)
-    options = ::PiggybakVariants::OptionConfiguration.find_all_by_klass(klass).collect { |oc| oc.option }
+    options = ::PiggybakVariants::OptionConfiguration.where(klass: klass).collect { |oc| oc.option }
   end
 
   def variant_map(object)
