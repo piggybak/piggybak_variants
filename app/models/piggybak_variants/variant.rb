@@ -3,6 +3,7 @@ module PiggybakVariants
     acts_as_sellable
     belongs_to :item, :polymorphic => true
     has_and_belongs_to_many :option_values, :class_name => "::PiggybakVariants::OptionValue"
+    has_many :options, :through => :option_values
 
     scope :available, -> { joins(:piggybak_sellable).where(["piggybak_sellables.active = ? AND (piggybak_sellables.quantity > 0 OR piggybak_sellables.unlimited_inventory = ?)",true,true]) } 
     validate :option_value_validation
