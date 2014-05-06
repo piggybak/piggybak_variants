@@ -1,3 +1,9 @@
+0.1.2
+Released: 05.06.2014
+* Added includes for query optimization
+* Added option lookup on variant
+* Fixed rails admin form on multi-word classnames
+
 0.1.1
 Released: 4.07.2014
 * Upgrade to Rails 4.1
