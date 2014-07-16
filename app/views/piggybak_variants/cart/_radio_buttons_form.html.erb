@@ -1,4 +1,4 @@
-<% if object.reflections.keys.include?(:variants) -%>
+<% if object.respond_to?(:variants) -%>
 	<script type="text/javascript">
 		var variant_map = <%= raw variant_map(object) %>;
 	</script>
