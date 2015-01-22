@@ -63,7 +63,6 @@ module PiggybakVariants
           end
           edit do
             field :name
-            field :image, :paperclip
             field :position
             field :option_configurations do
               label "Classes with Option"
