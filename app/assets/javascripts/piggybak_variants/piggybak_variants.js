@@ -1,7 +1,7 @@
 var piggybak_variants = {
 	refreshControls : function(data) {
 		if(data.all_selected) { // if all selected
-			var selected_key = data.selected.sort().join('_');
+			var selected_key = data.selected.sort(function (a, b) { return a - b }).join('_');
 			if(variant_map[selected_key]) {
 				$('.variant_options form').show();
 				$('#sellable_id').val(variant_map[selected_key].id);
